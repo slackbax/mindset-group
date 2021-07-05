@@ -1,0 +1,36 @@
+{
+  "name": "multifile",
+  "version": "2.2.2",
+  "homepage": "https://github.com/fyneworks/multifile",
+  "authors": [
+    "Fyneworks.com"
+  ],
+  "description": "jQuery multiple file upload plugin",
+  "main": "jquery.MultiFile.js",
+  "keywords": [
+    "jquery",
+    "file",
+    "upload"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower.json",
+    "package.json",
+    "docs",
+    "test",
+    "tests"
+  ],
+  "_release": "2.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.2.2",
+    "commit": "85242deb34b3647f584cae6c1f8a6b8e5afc5997"
+  },
+  "_source": "https://github.com/fyneworks/multifile.git",
+  "_target": "^2.2.2",
+  "_originalSource": "multifile",
+  "_direct": true
+}
