@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    const ctx = $('#myChart');
-    let myChart = new Chart(ctx, {
+    const ctx = $('#myChart'), ctx2 = $('#myChart2');
+    /*let myChart = new Chart(ctx, {
         type: 'horizontalBar',
         data: {
             labels: [],
@@ -9,7 +9,8 @@ $(document).ready(function () {
         options: {
             animation: {
                 onComplete: function () {
-                    ctx.setAttribute('href', this.toBase64Image());
+                    if (typeof ctx.setAttribute === 'function')
+                        ctx.setAttribute('href', this.toBase64Image());
                 }
             },
             responsive: true,
@@ -33,7 +34,26 @@ $(document).ready(function () {
                 }]
             }
         }
-    });
+    });*/
+
+    let myChart2 = new Chart(ctx2, {
+        type: 'radar',
+        data: {
+            labels: ['Iniciar un Cambio', 'Incentivar la Creatividad', 'Anticipar las Necesidades', 'Abogar por el Crecimiento', 'Enfatizar la Urgencia', 'Establecer un Enfoque Externo', 'Generar Resultados', 'Modelar la Productividad',
+                'Asegurar cumplimiento de Normas', 'Supervisar la Calidad', 'Controlar los Proyectos', 'Analizar la Eficiencia', 'Fomentar la Participación', 'Establecer Cohesión', 'Desarrollo de Personas', 'Mostrar Interés'],
+            datasets: []
+        },
+        options: {
+            animation: {
+                onComplete: function () {
+                    if (typeof ctx.setAttribute === 'function')
+                        ctx.setAttribute('href', this.toBase64Image());
+                }
+            },
+            responsive: true,
+            scale: {ticks: {min: -30, max: 30}, pointLabels: {fontSize: 14}},
+        }
+    })
 
     $('#submitLoaderSearch').css('display', 'none');
 
@@ -44,9 +64,9 @@ $(document).ready(function () {
         data: {user: $('#iid').val(), test: 1}
     }).done(function (r) {
         if (r.labels.length > 0) {
-            let lbl = [], vals = [], cols = [];
+            /*let lbl = [], vals = [], cols = [];*/
 
-            $.each(r.labels, function (k, v) {
+            /*$.each(r.labels, function (k, v) {
                 lbl.push(v);
                 vals.push(r.values[k]);
                 cols.push(r.colors[k]);
@@ -58,13 +78,39 @@ $(document).ready(function () {
                     backgroundColor: cols
                 }]
             }
-            myChart.update();
+            myChart.update();*/
+
+            let vals = [];
+            $.each(r.totals, function (k, v) {
+                vals.push(r.values[k]);
+            });
+            myChart2.config.data = {
+                labels: ['Iniciar un Cambio', 'Incentivar la Creatividad', 'Anticipar las Necesidades', 'Abogar por el Crecimiento', 'Enfatizar la Urgencia', 'Establecer un Enfoque Externo', 'Generar Resultados', 'Modelar la Productividad',
+                    'Asegurar cumplimiento de Normas', 'Supervisar la Calidad', 'Controlar los Proyectos', 'Analizar la Eficiencia', 'Fomentar la Participación', 'Establecer Cohesión', 'Desarrollo de Personas', 'Mostrar Interés'],
+                datasets: [
+                    {
+                        label: 'Contexto para el desempeño',
+                        data: vals,
+                        backgroundColor: 'rgba(0, 115, 183, 0.2)',
+                        borderColor: '#0073b7'
+                    }
+                ]
+            }
+            myChart2.config.options = {
+                animation: {
+                    onComplete: function () {
+                        ctx.setAttribute('href', this.toBase64Image());
+                    }
+                },
+            }
+            myChart2.update();
         }
     });
 
     $('#btnsearch').click(function () {
-        ctx.css('display', 'none');
-        myChart.clear();
+        ctx2.css('display', 'none');
+        /*myChart.clear();*/
+        myChart2.clear();
 
         $.ajax({
             type: 'POST',
@@ -73,9 +119,9 @@ $(document).ready(function () {
             data: {user: $('#iNuser').val(), test: 1}
         }).done(function (r) {
             if (r.labels[1] !== '') {
-                ctx.css('display', 'block');
+                ctx2.css('display', 'block');
 
-                setTimeout(function () {
+                /*setTimeout(function () {
                     let lbl = [], vals = [], cols = [];
 
                     $.each(r.labels, function (k, v) {
@@ -91,9 +137,34 @@ $(document).ready(function () {
                         }]
                     }
                     myChart.update();
-                }, 500);
-            } else {
+                }, 500);*/
 
+                setTimeout(function () {
+                    let vals = [];
+                    $.each(r.totals, function (k, v) {
+                        vals.push(r.values[k]);
+                    });
+                    myChart2.config.data = {
+                        labels: ['Iniciar un Cambio', 'Incentivar la Creatividad', 'Anticipar las Necesidades', 'Abogar por el Crecimiento', 'Enfatizar la Urgencia', 'Establecer un Enfoque Externo', 'Generar Resultados', 'Modelar la Productividad',
+                            'Asegurar cumplimiento de Normas', 'Supervisar la Calidad', 'Controlar los Proyectos', 'Analizar la Eficiencia', 'Fomentar la Participación', 'Establecer Cohesión', 'Desarrollo de Personas', 'Mostrar Interés'],
+                        datasets: [
+                            {
+                                label: 'Contexto para el desempeño',
+                                data: vals,
+                                backgroundColor: 'rgba(0, 115, 183, 0.2)',
+                                borderColor: '#0073b7'
+                            }
+                        ]
+                    }
+                    myChart2.config.options = {
+                        animation: {
+                            onComplete: function () {
+                                ctx.setAttribute('href', this.toBase64Image());
+                            }
+                        },
+                    }
+                    myChart2.update();
+                }, 500);
             }
         });
     });

@@ -119,7 +119,7 @@ try {
         case 1:
             $_SESSION['msg_useradmin'] = true;
             break;
-        case 2:
+        case 3:
             $_SESSION['msg_usersuperv'] = true;
             break;
         default:

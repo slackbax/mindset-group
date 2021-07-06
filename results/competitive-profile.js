@@ -8,13 +8,13 @@ $(document).ready(function () {
                 {
                     label: 'Actual',
                     data: [$('#total1').val(), $('#total3').val(), $('#total5').val(), $('#total7').val()],
-                    backgroundColor: 'rgba(221, 75, 57, 0.6)',
+                    backgroundColor: 'rgba(221, 75, 57, 0.2)',
                     borderColor: '#dd4b39'
                 },
                 {
                     label: 'Deseada',
                     data: [$('#total2').val(), $('#total4').val(), $('#total6').val(), $('#total8').val()],
-                    backgroundColor: 'rgba(0, 115, 183, 0.6)',
+                    backgroundColor: 'rgba(0, 115, 183, 0.2)',
                     borderColor: '#0073b7'
                 }
             ]
@@ -145,13 +145,13 @@ $(document).ready(function () {
                             {
                                 label: 'Actual',
                                 data: val1,
-                                backgroundColor: 'rgba(221, 75, 57, 0.6)',
+                                backgroundColor: 'rgba(221, 75, 57, 0.2)',
                                 borderColor: '#dd4b39'
                             },
                             {
                                 label: 'Deseada',
                                 data: val2,
-                                backgroundColor: 'rgba(0, 115, 183, 0.6)',
+                                backgroundColor: 'rgba(0, 115, 183, 0.2)',
                                 borderColor: '#0073b7'
                             }
                         ]

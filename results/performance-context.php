@@ -52,19 +52,19 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-sm-3 text-center">
-                    <button class="btn btn-block btn-danger" style="margin-bottom: 5px">Colaborar</button>
-                    <p>Fomentar la Participación</p>
-                    <p>Establecer Cohesión</p>
-                    <p>Desarrollo de Personas</p>
-                    <p>Mostrar Interés</p>
-                </div>
-
-                <div class="col-sm-3 text-center">
                     <button class="btn btn-block bg-green" style="margin-bottom: 5px">Crear</button>
                     <p>Iniciar un Cambio</p>
                     <p>Incentivar la Creatividad</p>
                     <p>Anticipar las Necesidades</p>
                     <p>Abogar por el Crecimiento</p>
+                </div>
+
+                <div class="col-sm-3 text-center">
+                    <button class="btn btn-block btn-warning" style="margin-bottom: 5px">Competir</button>
+                    <p>Enfatizar la Urgencia</p>
+                    <p>Establecer un Enfoque Externo</p>
+                    <p>Generar Resultados</p>
+                    <p>Modelar la Productividad</p>
                 </div>
 
                 <div class="col-sm-3 text-center">
@@ -76,17 +76,20 @@
                 </div>
 
                 <div class="col-sm-3 text-center">
-                    <button class="btn btn-block btn-warning" style="margin-bottom: 5px">Competir</button>
-                    <p>Enfatizar la Urgencia</p>
-                    <p>Establecer un Enfoque Externo</p>
-                    <p>Generar Resultados</p>
-                    <p>Modelar la Productividad</p>
+                    <button class="btn btn-block btn-danger" style="margin-bottom: 5px">Colaborar</button>
+                    <p>Fomentar la Participación</p>
+                    <p>Establecer Cohesión</p>
+                    <p>Desarrollo de Personas</p>
+                    <p>Mostrar Interés</p>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12">
-                    <canvas id="myChart" width="400" height="400"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
+            <div class="row" style="margin-top: 20px">
+                <!--<div class="col-sm-12">
+                    <canvas id="myChart" width="400" height="400"<?php /*if ($_admin or $_superv): */?> style="display: none"<?php /*endif */?>></canvas>
+                </div>-->
+                <div class="col-sm-12 col-md-6 col-md-offset-3">
+                    <canvas id="myChart2" width="600" height="500"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
             </div>
         </div>
