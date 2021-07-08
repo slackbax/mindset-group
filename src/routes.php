@@ -5,6 +5,7 @@ extract($_GET);
 if (!isset($section) || $section == 'home'):
     include 'main/main-index.php';
 
+// INSTRUMENTS
 elseif ($section == 'instruments' and $_login):
     if ($sbs == 'performancecontext'):
         include 'instruments/performance-context.php';
@@ -20,6 +21,7 @@ elseif ($section == 'instruments' and $_login):
         include 'src/error.php';
     endif;
 
+// RESULTS
 elseif ($section == 'results' and $_login):
     if ($sbs == 'performanceresult'):
         include 'results/performance-context.php';
@@ -31,6 +33,20 @@ elseif ($section == 'results' and $_login):
         include 'results/competitive-profile.php';
     elseif ($sbs == 'managerresult'):
         include 'results/manager-profile.php';
+    else:
+        include 'src/error.php';
+    endif;
+
+// CONSOLIDATED
+elseif ($section == 'consolidated' and $_login):
+    if ($sbs == 'performanceconsolidated'):
+        include 'consolidated/performance-context.php';
+    elseif ($sbs == 'teamconsolidated'):
+        include 'consolidated/team-health.php';
+    elseif ($sbs == 'team2consolidated'):
+        include 'consolidated/team-health-II.php';
+    elseif ($sbs == 'competitiveconsolidated'):
+        include 'consolidated/competitive-profile.php';
     else:
         include 'src/error.php';
     endif;

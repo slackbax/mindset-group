@@ -2,34 +2,28 @@ $(document).ready(function () {
     const ctx1 = $('#myChart1'), ctx2 = $('#myChart2'), ctx3 = $('#myChart3'), ctx4 = $('#myChart4'),
         $id = $('#iid'), $user = $('#iNuser');
     const chartOptions = {
-        animation: {
-            onComplete: function () {
-                document.querySelector("#" + this.canvas.id).setAttribute('href', this.toBase64Image());
-            }
-        },
         responsive: true,
-        legend: {display: false},
-        tooltips: {enabled: false},
-        scales: {xAxes: [{ticks: {stepSize: 5, min: -10, max: 10}}], yAxes: [{ticks: {fontSize: 11}}]}
+        plugins: {legend: {labels: {font: {size: 16}}}}, scales: {x: {min: -10, max: 10, ticks: {stepSize: 5}}, y: {ticks: {font: {size: 11}}}},
+        indexAxis: 'y'
     };
 
     let myChart1 = new Chart(ctx1, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {labels: [], datasets: []},
         options: chartOptions
     });
     let myChart2 = new Chart(ctx2, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {labels: [], datasets: []},
         options: chartOptions
     });
     let myChart3 = new Chart(ctx3, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {labels: [], datasets: []},
         options: chartOptions
     });
     let myChart4 = new Chart(ctx4, {
-        type: 'horizontalBar',
+        type: 'bar',
         data: {labels: [], datasets: []},
         options: chartOptions
     });
@@ -52,10 +46,11 @@ $(document).ready(function () {
             myChart1.config.data = {
                 labels: lbl,
                 datasets: [{
+                    label: 'Alineamiento de metas',
                     data: vals,
                     backgroundColor: cols
                 }]
-            }
+            };
             myChart1.update();
         }
     });
@@ -76,10 +71,11 @@ $(document).ready(function () {
             myChart2.config.data = {
                 labels: lbl,
                 datasets: [{
+                    label: 'Claridad estructural',
                     data: vals,
                     backgroundColor: cols
                 }]
-            }
+            };
             myChart2.update();
         }
     });
@@ -100,10 +96,11 @@ $(document).ready(function () {
             myChart3.config.data = {
                 labels: lbl,
                 datasets: [{
+                    label: 'Agilidad de cambio',
                     data: vals,
                     backgroundColor: cols
                 }]
-            }
+            };
             myChart3.update();
         }
     });
@@ -124,10 +121,11 @@ $(document).ready(function () {
             myChart4.config.data = {
                 labels: lbl,
                 datasets: [{
+                    label: 'Conductas constructivas',
                     data: vals,
                     backgroundColor: cols
                 }]
-            }
+            };
             myChart4.update();
         }
     });
@@ -161,6 +159,7 @@ $(document).ready(function () {
                     myChart1.config.data = {
                         labels: lbl,
                         datasets: [{
+                            label: 'Alineamiento de metas',
                             data: vals,
                             backgroundColor: cols
                         }]
@@ -189,6 +188,7 @@ $(document).ready(function () {
                     myChart2.config.data = {
                         labels: lbl,
                         datasets: [{
+                            label: 'Claridad estructural',
                             data: vals,
                             backgroundColor: cols
                         }]
@@ -217,6 +217,7 @@ $(document).ready(function () {
                     myChart3.config.data = {
                         labels: lbl,
                         datasets: [{
+                            label: 'Agilidad de cambio',
                             data: vals,
                             backgroundColor: cols
                         }]
@@ -245,6 +246,7 @@ $(document).ready(function () {
                     myChart4.config.data = {
                         labels: lbl,
                         datasets: [{
+                            label: 'Conductas constructivas',
                             data: vals,
                             backgroundColor: cols
                         }]

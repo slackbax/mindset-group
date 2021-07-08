@@ -260,6 +260,13 @@ $profile = ['Características Dominantes', 'Líder de la Organización', 'Direcc
                             <td class="bg-red"><?php echo round($total7 / 600 * 100) . '%' ?></td>
                             <td class="bg-blue"><?php echo round($total8 / 600 * 100) . '%' ?></td>
                         </tr>
+                        <tr class="text-center text-bold">
+                            <td>Perfil</td>
+                            <td colspan="2">Clan</td>
+                            <td colspan="2">Adhocrático</td>
+                            <td colspan="2">Mercado</td>
+                            <td colspan="2">Jerarquía</td>
+                        </tr>
                         </tfoot>
                     </table>
                     <input type="hidden" id="total1" value="<?php echo round($total1 / 600 * 100) ?>">

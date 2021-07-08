@@ -27,8 +27,6 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
-    <!-- Chart.js -->
-    <script src="bower_components/chart.js/dist/Chart.min.css"></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
@@ -222,7 +220,7 @@
     <script src="bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
     <script src="bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
     <!-- Chart.js -->
-    <script src="bower_components/chart.js/dist/Chart.min.js"></script>
+    <script src="bower_components/chartjs-Chart.js/dist/chart.js"></script>
     <!-- jQueryForm -->
     <script src="bower_components/jquery-form/dist/jquery.form.min.js"></script>
     <!-- date-range-picker -->

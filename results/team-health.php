@@ -52,26 +52,20 @@
         <div class="box-body">
             <div class="row">
                 <div class="col-sm-6 text-center">
-                    <h5 class="text-bold">Alineamiento de metas</h5>
                     <canvas id="myChart1" width="600" height="600"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
 
                 <div class="col-sm-6 text-center">
-                    <h5 class="text-bold">Claridad estructural</h5>
                     <canvas id="myChart2" width="600" height="600"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
             </div>
 
-            <hr>
-
-            <div class="row">
+            <div class="row" style="margin-top: 15px">
                 <div class="col-sm-6 text-center">
-                    <h5 class="text-bold">Agilidad de cambio</h5>
                     <canvas id="myChart3" width="600" height="600"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
 
                 <div class="col-sm-6 text-center">
-                    <h5 class="text-bold">Conductas constructivas</h5>
                     <canvas id="myChart4" width="600" height="600"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
             </div>

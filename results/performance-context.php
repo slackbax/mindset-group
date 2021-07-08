@@ -85,11 +85,8 @@
             </div>
 
             <div class="row" style="margin-top: 20px">
-                <!--<div class="col-sm-12">
-                    <canvas id="myChart" width="400" height="400"<?php /*if ($_admin or $_superv): */?> style="display: none"<?php /*endif */?>></canvas>
-                </div>-->
                 <div class="col-sm-12 col-md-6 col-md-offset-3">
-                    <canvas id="myChart2" width="600" height="500"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
+                    <canvas id="myChart" width="600" height="500"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
                 </div>
             </div>
         </div>

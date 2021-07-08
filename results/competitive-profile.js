@@ -3,31 +3,26 @@ $(document).ready(function () {
     let myChart = new Chart(ctx, {
         type: 'radar',
         data: {
-            labels: ['Flexibilidad', 'Foco Externo', 'Control', 'Foco Interno'],
+            labels: ['FLEXIBILIDAD', 'Adhocrático', 'FOCO EXTERNO', 'Mercado', 'CONTROL', 'Jerarquía', 'FOCO INTERNO', 'Clan'],
             datasets: [
                 {
                     label: 'Actual',
-                    data: [$('#total1').val(), $('#total3').val(), $('#total5').val(), $('#total7').val()],
+                    data: [null, $('#total3').val(), null, $('#total5').val(), null, $('#total7').val(), null, $('#total1').val()],
                     backgroundColor: 'rgba(221, 75, 57, 0.2)',
                     borderColor: '#dd4b39'
                 },
                 {
                     label: 'Deseada',
-                    data: [$('#total2').val(), $('#total4').val(), $('#total6').val(), $('#total8').val()],
+                    data: [null, $('#total4').val(), null, $('#total6').val(), null, $('#total8').val(), null, $('#total2').val()],
                     backgroundColor: 'rgba(0, 115, 183, 0.2)',
                     borderColor: '#0073b7'
                 }
             ]
         },
         options: {
-            animation: {
-                onComplete: function () {
-                    if (typeof ctx.setAttribute === 'function')
-                        ctx.setAttribute('href', this.toBase64Image());
-                }
-            },
             responsive: true,
-            scale: {ticks: {min: 0, max: 100}, pointLabels: {fontSize: 16}},
+            scales: {r: {min: 0, max: 100, pointLabels: {font: {size: 14}}}},
+            spanGaps: true
         }
     }), val1 = [], val2 = [];
 
@@ -92,10 +87,14 @@ $(document).ready(function () {
                 $table3.rows[9].cells[5].innerHTML = number_format(total3 / 6, 1, '.', '');
                 $table1.rows[8].cells[4].innerHTML = number_format(total4 / 6, 1, '.', '');
                 $table3.rows[9].cells[7].innerHTML = number_format(total4 / 6, 1, '.', '');
-                val1.push((total1 / 6).toFixed(1));
+                val1.push(null);
                 val1.push((total2 / 6).toFixed(1));
+                val1.push(null);
                 val1.push((total3 / 6).toFixed(1));
+                val1.push(null);
                 val1.push((total4 / 6).toFixed(1));
+                val1.push(null);
+                val1.push((total1 / 6).toFixed(1));
 
 
                 total1 = 0;
@@ -133,14 +132,18 @@ $(document).ready(function () {
                 $table3.rows[9].cells[6].innerHTML = number_format(total3 / 6, 1, '.', '');
                 $table2.rows[8].cells[4].innerHTML = number_format(total4 / 6, 1, '.', '');
                 $table3.rows[9].cells[8].innerHTML = number_format(total4 / 6, 1, '.', '');
-                val2.push((total1 / 6).toFixed(1));
+                val2.push(null);
                 val2.push((total2 / 6).toFixed(1));
+                val2.push(null);
                 val2.push((total3 / 6).toFixed(1));
+                val2.push(null);
                 val2.push((total4 / 6).toFixed(1));
+                val2.push(null);
+                val2.push((total1 / 6).toFixed(1));
 
                 setTimeout(function () {
                     myChart.config.data = {
-                        labels: ['Flexibilidad', 'Foco Externo', 'Control', 'Foco Interno'],
+                        labels: ['FLEXIBILIDAD', 'Adhocrático', 'FOCO EXTERNO', 'Mercado', 'CONTROL', 'Jerarquía', 'FOCO INTERNO', 'Clan'],
                         datasets: [
                             {
                                 label: 'Actual',
@@ -155,13 +158,6 @@ $(document).ready(function () {
                                 borderColor: '#0073b7'
                             }
                         ]
-                    }
-                    myChart.config.options = {
-                        animation: {
-                            onComplete: function () {
-                                ctx.setAttribute('href', this.toBase64Image());
-                            }
-                        },
                     }
                     myChart.update();
                 }, 500);
