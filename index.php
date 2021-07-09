@@ -221,6 +221,7 @@
     <script src="bower_components/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
     <!-- Chart.js -->
     <script src="bower_components/chartjs-Chart.js/dist/chart.js"></script>
+    <script src="bower_components/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
     <!-- jQueryForm -->
     <script src="bower_components/jquery-form/dist/jquery.form.min.js"></script>
     <!-- date-range-picker -->

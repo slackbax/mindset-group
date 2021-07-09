@@ -15,7 +15,7 @@ $(document).ready(function () {
                 type: 'success',
                 callbacks: {
                     afterClose: function () {
-                        document.location.replace('index.php?section=results&sbs=teamhealth2');
+                        document.location.replace('index.php?section=results&sbs=teamresult2');
                     }
                 }
             }).show();

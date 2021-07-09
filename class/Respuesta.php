@@ -124,7 +124,7 @@ class Respuesta {
 				throw new Exception("La inserción de la respuesta falló en su preparación.");
 			endif;
 
-			$valor_sec = !is_null($valor_sec) ? $db->clearText($valor_sec) : 'NULL';
+			$valor_sec = !is_null($valor_sec) ? $db->clearText($valor_sec) : null;
 
 			$exa = $db->clearText($exa);
 			$pre = $db->clearText($pre);

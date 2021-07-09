@@ -81,7 +81,7 @@
             </div>
 
             <div class="row" style="margin-top: 20px">
-                <div class="col-sm-12 col-md-6 col-md-offset-3">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
                     <canvas id="myChart" width="600" height="400"></canvas>
                 </div>
             </div>

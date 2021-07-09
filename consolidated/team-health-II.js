@@ -12,12 +12,11 @@ $(document).ready(function () {
 
         $.ajax({
             type: 'POST',
-            url: 'results/ajax.getHealth2ResultsByUser.php',
+            url: 'consolidated/ajax.getHealth2ResultsByGroup.php',
             dataType: 'json',
-            data: {user: $('#iNuser').val(), test: 3}
+            data: {group: $('#iNgroup').val()}
         }).done(function (r) {
-            if (r['A'][0] !== null) {
-
+            if (r['A'][0] !== 0) {
                 for (let j = 0; j <= 4; j++) {
                     $table1.rows[2].cells[j].innerHTML = r['A'][j];
                     $table1.rows[3].cells[j].innerHTML = r['B'][j];

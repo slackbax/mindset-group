@@ -39,7 +39,7 @@ if (extract($_POST)):
         6 => array(
             'A' => array(0, 0, 0, 0),
             'D' => array(0, 0, 0, 0),
-        ),
+        )
     );
 
     foreach ($u as $ig => $vg):

@@ -245,7 +245,7 @@ $profile = ['Características Dominantes', 'Líder de la Organización', 'Direcc
 
         <div class="box-body">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-md-offset-3">
+                <div class="col-sm-12 col-md-10 col-md-offset-1">
                     <canvas id="myChart" width="200" height="200" style="display: none"></canvas>
                 </div>
             </div>

@@ -31,7 +31,7 @@ $(document).ready(function () {
                     'Asegurar cumplimiento de Normas', 'Supervisar la Calidad', 'Controlar los Proyectos', 'Analizar la Eficiencia', 'Fomentar la Participación', 'Establecer Cohesión', 'Desarrollo de Personas', 'Mostrar Interés'],
                 datasets: [
                     {
-                        label: 'Contexto para el desempeño',
+                        label: 'Contexto para el Desempeño',
                         data: vals,
                         backgroundColor: 'rgba(0, 115, 183, 0.2)',
                         borderColor: '#0073b7'
@@ -65,7 +65,7 @@ $(document).ready(function () {
                             'CONTROL', 'Asegurar cumplimiento de Normas', 'Supervisar la Calidad', 'Controlar los Proyectos', 'Analizar la Eficiencia', 'FOCO INTERNO', 'Fomentar la Participación', 'Establecer Cohesión', 'Desarrollo de Personas', 'Mostrar Interés'],
                         datasets: [
                             {
-                                label: 'Contexto para el desempeño',
+                                label: 'Contexto para el Desempeño',
                                 data: vals,
                                 backgroundColor: 'rgba(0, 115, 183, 0.2)',
                                 borderColor: '#0073b7'

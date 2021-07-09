@@ -1,30 +1,16 @@
 <?php
-function evaluateScore($v): string
-{
-    if ($v <= 5):
-        $str = 'bg-red';
-    elseif ($v > 5 and $v <= 7):
-        $str = 'bg-yellow';
-    else:
-        $str = 'bg-green';
-    endif;
-
-    return $str;
-}
 
 include 'class/Examen.php';
 include 'class/Respuesta.php';
 include 'class/Pregunta.php';
-include 'class/User.php';
+include 'class/Grupo.php';
 
 $db = new myDBC();
 $ex = new Examen();
 $re = new Respuesta();
 $pr = new Pregunta();
-$us = new User();
+$gr = new Grupo();
 
-if (!$_admin and !$_superv)
-    $exa = $ex->getByUserTestType($_SESSION['msg_userid'], 3, $db);
 $total1 = $total2 = $total3 = $total4 = $total5 = 0;
 ?>
 
@@ -40,36 +26,32 @@ $total1 = $total2 = $total3 = $total4 = $total5 = 0;
 </section>
 
 <section class="content container-fluid">
-    <?php if ($_admin or $_superv): ?>
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <h3 class="box-title">Filtros de búsqueda</h3>
-            </div>
+    <div class="box box-default">
+        <div class="box-header with-border">
+            <h3 class="box-title">Filtros de búsqueda</h3>
+        </div>
 
-            <div class="box-body">
-                <div class="row">
-                    <div class="form-group col-md-6 col-lg-4 has-feedback" id="guser">
-                        <label class="control-label" for="iNuser">Usuario</label>
-                        <select class="form-control" id="iNuser" name="iuser">
-                            <option value="">Selecciona usuario</option>
-                            <?php $u = $us->getByProfile(2) ?>
-                            <?php foreach ($u as $k => $user): ?>
-                                <option value="<?php echo $user->us_id ?>"><?php echo $user->us_nombres . ' ' . $user->us_ap . ' ' . $user->us_am ?></option>
-                            <?php endforeach ?>
-                        </select>
-                    </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="form-group col-md-6 col-lg-4 has-feedback" id="ggroup">
+                    <label class="control-label" for="iNgroup">Grupo</label>
+                    <select class="form-control" id="iNgroup" name="igroup">
+                        <option value="">Selecciona grupo</option>
+                        <?php $g = $gr->getAll() ?>
+                        <?php foreach ($g as $k => $group): ?>
+                            <option value="<?php echo $group->gr_id ?>"><?php echo $group->gr_nombre ?></option>
+                        <?php endforeach ?>
+                    </select>
                 </div>
             </div>
-
-            <div class="box-footer">
-                <button type="button" class="btn btn-primary" id="btnsearch"><i class="fa fa-search"></i> Buscar resultados</button>
-                <button type="reset" class="btn btn-default" id="btnClear">Limpiar</button>
-                <i class="ajaxLoader fa fa-cog fa-spin" id="submitLoaderSearch"></i>
-            </div>
         </div>
-    <?php else: ?>
-        <input type="hidden" name="iid" id="iid" value="<?php echo $_SESSION['msg_userid'] ?>">
-    <?php endif ?>
+
+        <div class="box-footer">
+            <button type="button" class="btn btn-primary" id="btnsearch"><i class="fa fa-search"></i> Buscar resultados</button>
+            <button type="reset" class="btn btn-default" id="btnClear">Limpiar</button>
+            <i class="ajaxLoader fa fa-cog fa-spin" id="submitLoaderSearch"></i>
+        </div>
+    </div>
 
     <div class="box box-default">
         <div class="box-header with-border">
@@ -103,48 +85,30 @@ $total1 = $total2 = $total3 = $total4 = $total5 = 0;
                         <tr class="text-center">
                             <?php $preg = [4, 1, 3, 2, 5] ?>
                             <?php foreach ($preg as $i => $p): ?>
-                                <?php $res = $re->getByExamenNumber($exa->exa_id, $p); ?>
-                                <?php if ($i == 0) $total1 += $res->res_valor ?>
-                                <?php if ($i == 1) $total2 += $res->res_valor ?>
-                                <?php if ($i == 2) $total3 += $res->res_valor ?>
-                                <?php if ($i == 3) $total4 += $res->res_valor ?>
-                                <?php if ($i == 4) $total5 += $res->res_valor ?>
-                                <td><?php echo $res->res_valor ?></td>
+                                <td></td>
                             <?php endforeach ?>
                         </tr>
                         <tr class="text-center">
                             <?php $preg = [6, 7, 8, 11, 9] ?>
                             <?php foreach ($preg as $i => $p): ?>
-                                <?php $res = $re->getByExamenNumber($exa->exa_id, $p); ?>
-                                <?php if ($i == 0) $total1 += $res->res_valor ?>
-                                <?php if ($i == 1) $total2 += $res->res_valor ?>
-                                <?php if ($i == 2) $total3 += $res->res_valor ?>
-                                <?php if ($i == 3) $total4 += $res->res_valor ?>
-                                <?php if ($i == 4) $total5 += $res->res_valor ?>
-                                <td><?php echo $res->res_valor ?></td>
+                                <td></td>
                             <?php endforeach ?>
                         </tr>
                         <tr class="text-center">
                             <?php $preg = [12, 10, 13, 14, 15] ?>
                             <?php foreach ($preg as $i => $p): ?>
-                                <?php $res = $re->getByExamenNumber($exa->exa_id, $p); ?>
-                                <?php if ($i == 0) $total1 += $res->res_valor ?>
-                                <?php if ($i == 1) $total2 += $res->res_valor ?>
-                                <?php if ($i == 2) $total3 += $res->res_valor ?>
-                                <?php if ($i == 3) $total4 += $res->res_valor ?>
-                                <?php if ($i == 4) $total5 += $res->res_valor ?>
-                                <td><?php echo $res->res_valor ?></td>
+                                <td></td>
                             <?php endforeach ?>
                         </tr>
                         </tbody>
 
                         <tfoot>
                         <tr class="text-center text-bold">
-                            <td class="<?php echo evaluateScore($total1) ?>"><?php echo $total1 ?></td>
-                            <td class="<?php echo evaluateScore($total2) ?>"><?php echo $total2 ?></td>
-                            <td class="<?php echo evaluateScore($total3) ?>"><?php echo $total3 ?></td>
-                            <td class="<?php echo evaluateScore($total4) ?>"><?php echo $total4 ?></td>
-                            <td class="<?php echo evaluateScore($total5) ?>"><?php echo $total5 ?></td>
+                            <td class="bg-gray"><?php echo $total1 ?></td>
+                            <td class="bg-gray"><?php echo $total2 ?></td>
+                            <td class="bg-gray"><?php echo $total3 ?></td>
+                            <td class="bg-gray"><?php echo $total4 ?></td>
+                            <td class="bg-gray"><?php echo $total5 ?></td>
                         </tr>
                         </tfoot>
                     </table>
@@ -179,4 +143,4 @@ $total1 = $total2 = $total3 = $total4 = $total5 = 0;
     </div>
 </section>
 
-<script src="results/team-health-II.js"></script>
+<script src="consolidated/team-health-II.js"></script>
