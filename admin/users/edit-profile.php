@@ -1,6 +1,6 @@
 <?php include 'class/User.php' ?>
 <?php $us = new User() ?>
-<?php $u = $us->get($_SESSION['tst_userid']) ?>
+<?php $u = $us->get($_SESSION['msg_userid']) ?>
 
 <section class="content-header">
 	<h1>Menú de Usuario
@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="form-group col-sm-6 col-lg-4 has-feedback" id="gname">
                         <label class="control-label" for="iname">Nombres *</label>
-                        <input type="hidden" name="id" id="iNid" value="<?php echo $_SESSION['tst_userid'] ?>">
+                        <input type="hidden" name="id" id="iNid" value="<?php echo $_SESSION['msg_userid'] ?>">
                         <input type="text" class="form-control" id="iNname" name="iname" placeholder="Ingresa nombres del usuario" value="<?php echo $u->us_nombres ?>" required>
                         <i class="fa form-control-feedback" id="iconname"></i>
                     </div>

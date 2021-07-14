@@ -23,7 +23,7 @@
 					<div class="form-group col-sm-6 has-feedback" id="goldpass">
 						<label for="ioldpass">Ingresa tu contraseña actual</label>
                         <input type="password" class="form-control" id="iNoldpass" name="ioldpass">
-						<input type="hidden" name="uid" id="uid" value="<?php echo $_SESSION['tst_userid'] ?>">
+						<input type="hidden" name="uid" id="uid" value="<?php echo $_SESSION['msg_userid'] ?>">
 					</div>
 				</div>
 

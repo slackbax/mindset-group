@@ -19,7 +19,7 @@ if (extract($_POST)):
 		$iactive = 0;
 	endif;
 
-	if ($_SESSION['tst_userid'] == $id):
+	if ($_SESSION['msg_userid'] == $id):
 		$_islog = true;
 	endif;
 
@@ -33,10 +33,10 @@ if (extract($_POST)):
 		endif;
 
 		if ($_islog):
-			$_SESSION['tst_userfname'] = $iname;
-			$_SESSION['tst_userlnamep'] = $ilastnamep;
-			$_SESSION['tst_userlnamem'] = $ilastnamem;
-			$_SESSION['tst_useremail'] = $iemail;
+			$_SESSION['msg_userfname'] = $iname;
+			$_SESSION['msg_userlnamep'] = $ilastnamep;
+			$_SESSION['msg_userlnamem'] = $ilastnamem;
+			$_SESSION['msg_useremail'] = $iemail;
 		endif;
 
 		if (!empty($_FILES)):
@@ -75,7 +75,7 @@ if (extract($_POST)):
 				throw new Exception('Error al guardar la imagen. ' . $ins['msg'], 0);
 			endif;
 
-			$_SESSION['tst_userpic'] = 'users/' . $id . '_' . $file['name'][0];
+			$_SESSION['msg_userpic'] = 'users/' . $id . '_' . $file['name'][0];
 		endif;
 
 		$db->Commit();

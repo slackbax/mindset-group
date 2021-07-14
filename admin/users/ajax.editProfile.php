@@ -14,22 +14,22 @@ if (extract($_POST)):
 
     try {
         $db->autoCommit(FALSE);
-        $ins = $user->modProfile($_SESSION['tst_userid'], $iname, $ilastnamep, $ilastnamem, $iemail, $db);
+        $ins = $user->modProfile($_SESSION['msg_userid'], $iname, $ilastnamep, $ilastnamem, $iemail, $db);
 
         if (!$ins['estado']):
             throw new Exception('Error al guardar los datos del usuario. ' . $ins['msg'], 0);
         endif;
 
-        $_SESSION['tst_userfname'] = $iname;
-        $_SESSION['tst_userlnamep'] = $ilastnamep;
-        $_SESSION['tst_userlnamem'] = $ilastnamem;
-        $_SESSION['tst_useremail'] = $iemail;
+        $_SESSION['msg_userfname'] = $iname;
+        $_SESSION['msg_userlnamep'] = $ilastnamep;
+        $_SESSION['msg_userlnamem'] = $ilastnamem;
+        $_SESSION['msg_useremail'] = $iemail;
 
         if (!empty($_FILES)):
             $targetFolder = 'dist/img/users/';
             $targetPath = $_BASEDIR[0] . $targetFolder;
 
-            $u = $user->get($_SESSION['tst_userid']);
+            $u = $user->get($_SESSION['msg_userid']);
 
             if ($u->us_pic == 'users/no-photo.png'):
                 $_default = true;
@@ -49,19 +49,19 @@ if (extract($_POST)):
 
             foreach ($_FILES as $aux => $file):
                 $tempFile = $file['tmp_name'][0];
-                $targetFile = rtrim($targetPath, '/') . '/' . $_SESSION['tst_userid'] . '_' . $file['name'][0];
+                $targetFile = rtrim($targetPath, '/') . '/' . $_SESSION['msg_userid'] . '_' . $file['name'][0];
                 move_uploaded_file($tempFile, $targetFile);
             endforeach;
 
-            $pic_route = 'users/' . $_SESSION['tst_userid'] . '_' . $file['name'][0];
+            $pic_route = 'users/' . $_SESSION['msg_userid'] . '_' . $file['name'][0];
 
-            $ins = $user->setPicture($_SESSION['tst_userid'], $pic_route, $db);
+            $ins = $user->setPicture($_SESSION['msg_userid'], $pic_route, $db);
 
             if (!$ins):
                 throw new Exception('Error al guardar la imagen. ' . $ins['msg'], 0);
             endif;
 
-            $_SESSION['tst_userpic'] = 'users/' . $_SESSION['tst_userid'] . '_' . $file['name'][0];
+            $_SESSION['msg_userpic'] = 'users/' . $_SESSION['msg_userid'] . '_' . $file['name'][0];
         endif;
 
         $db->Commit();
