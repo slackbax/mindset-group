@@ -11,13 +11,8 @@ $(document).ready(function () {
 
         if (response.type) {
             new Noty({
-                text: '<b>¡Éxito!</b><br> Las respuestas han sido guardadas correctamente. Redirigiendo a resultados...',
-                type: 'success',
-                callbacks: {
-                    afterClose: function () {
-                        document.location.replace('index.php?section=results&sbs=competitiveresult');
-                    }
-                }
+                text: '<b>¡Éxito!</b><br> Las respuestas han sido guardadas correctamente.',
+                type: 'success'
             }).show();
 
             $clear.click();

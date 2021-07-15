@@ -32,7 +32,7 @@
             </div>
 
             <div class="box-body">
-                <div class="row">
+                <div class="row hidden-xs hidden-sm">
                     <div class="col-sm-12 col-lg-5"></div>
 
                     <div class="col-sm-1 text-center text-bold" style="font-size: 11px">
@@ -72,31 +72,38 @@
                             <span class="text-bold"><?php echo $ind ?>.</span> <?php echo $v->pre_descripcion ?>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Nunca</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_1" value="1" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Rara vez</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_2" value="2" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">A veces</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_3" value="3" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Ocasionalmente</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_4" value="4" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Frecuentemente</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_5" value="5" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Muy frecuentemente</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_5" value="6" required>
                         </div>
 
-                        <div class="col-sm-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Casi siempre</div>
+                        <div class="col-xs-6 col-md-1 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_5" value="7" required>
                         </div>
                     </div>

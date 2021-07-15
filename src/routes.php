@@ -22,7 +22,7 @@ elseif ($section == 'instruments' and $_login):
     endif;
 
 // RESULTS
-elseif ($section == 'results' and $_login):
+elseif ($section == 'results' and $_admin):
     if ($sbs == 'performanceresult'):
         include 'results/performance-context.php';
     elseif ($sbs == 'teamresult'):
@@ -38,7 +38,7 @@ elseif ($section == 'results' and $_login):
     endif;
 
 // CONSOLIDATED
-elseif ($section == 'consolidated' and $_login):
+elseif ($section == 'consolidated' and $_admin):
     if ($sbs == 'performanceconsolidated'):
         include 'consolidated/performance-context.php';
     elseif ($sbs == 'teamconsolidated'):

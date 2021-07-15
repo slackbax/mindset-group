@@ -13,9 +13,7 @@ if (extract($_POST)):
     try {
         $db->autoCommit(FALSE);
 
-        $name = (isset($iname)) ? 1 : 0;
-
-        $ins_ex = $e->set($_SESSION['msg_userid'], $ipid, $name, $db);
+        $ins_ex = $e->set($_SESSION['msg_userid'], $ipid, 1, $db);
 
         if (!$ins_ex['estado']):
             throw new Exception('Error al guardar el examen. ' . $ins_ex['msg'], 0);

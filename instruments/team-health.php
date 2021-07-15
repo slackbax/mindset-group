@@ -29,39 +29,29 @@
                         <?php echo $pr->pru_introduccion ?>
                     </div>
                 </div>
-
-                <div class="row" style="margin-top: 15px">
-                    <div class="form-group col-sm-6 col-lg-4">
-                        <p>
-                            <label class="label-checkbox">
-                                <input type="checkbox" class="minimal" name="iname"> Deseo revelar mi nombre
-                            </label>
-                        </p>
-                    </div>
-                </div>
             </div>
 
             <div class="box-body">
-                <div class="row">
-                    <div class="col-sm-12 col-lg-7"></div>
+                <div class="row hidden-xs hidden-sm">
+                    <div class="col-md-12 col-lg-7"></div>
 
-                    <div class="col-sm-2 col-lg-1 text-center text-bold">
+                    <div class="col-md-2 col-lg-1 text-center text-bold" style="font-size: 12px">
                         Muy en desacuerdo
                     </div>
 
-                    <div class="col-sm-2 col-lg-1 text-center text-bold">
+                    <div class="col-md-2 col-lg-1 text-center text-bold" style="font-size: 12px">
                         En desacuerdo
                     </div>
 
-                    <div class="col-sm-2 col-lg-1 text-center text-bold">
+                    <div class="col-md-2 col-lg-1 text-center text-bold" style="font-size: 12px">
                         Neutro
                     </div>
 
-                    <div class="col-sm-2 col-lg-1 text-center text-bold">
+                    <div class="col-md-2 col-lg-1 text-center text-bold" style="font-size: 12px">
                         De acuerdo
                     </div>
 
-                    <div class="col-sm-2 col-lg-1 text-center text-bold">
+                    <div class="col-md-2 col-lg-1 text-center text-bold" style="font-size: 12px">
                         Muy de acuerdo
                     </div>
                 </div>
@@ -74,23 +64,28 @@
                             <span class="text-bold"><?php echo $ind ?>.</span> <?php echo $v->pre_descripcion ?>
                         </div>
 
-                        <div class="col-sm-2 col-lg-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Muy en desacuerdo</div>
+                        <div class="col-xs-6 col-md-2 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_1" value="-10" required>
                         </div>
 
-                        <div class="col-sm-2 col-lg-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">En desacuerdo</div>
+                        <div class="col-xs-6 col-md-2 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_2" value="-5" required>
                         </div>
 
-                        <div class="col-sm-2 col-lg-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Neutro</div>
+                        <div class="col-xs-6 col-md-2 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_3" value="0" required>
                         </div>
 
-                        <div class="col-sm-2 col-lg-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">De acuerdo</div>
+                        <div class="col-xs-6 col-md-2 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_4" value="5" required>
                         </div>
 
-                        <div class="col-sm-2 col-lg-1 text-center">
+                        <div class="col-xs-6 hidden-md hidden-lg text-bold" style="margin-top: 5px">Muy de acuerdo</div>
+                        <div class="col-xs-6 col-md-2 col-lg-1 text-center" style="margin-top: 5px">
                             <input class="minimal" type="radio" name="pr[<?php echo $v->pre_id ?>]" id="pr_<?php echo $v->pre_id ?>_5" value="10" required>
                         </div>
                     </div>
