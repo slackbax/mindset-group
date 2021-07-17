@@ -176,6 +176,14 @@ $total1 = $total2 = $total3 = $total4 = $total5 = 0;
                 </div>
             </div>
         </div>
+
+        <div class="box-body">
+            <div class="row">
+                <div class="col-sm-8 col-sm-offset-2 text-center">
+                    <canvas id="myChart" width="600" height="600"<?php if ($_admin or $_superv): ?> style="display: none"<?php endif ?>></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

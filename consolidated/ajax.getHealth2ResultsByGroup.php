@@ -19,6 +19,19 @@ function evaluateScore($v): string
     return $str;
 }
 
+function evaluateBar($v): string
+{
+    if ($v <= 5):
+        $str = '#dd4b39';
+    elseif ($v > 5 and $v <= 7):
+        $str = '#f39c12';
+    else:
+        $str = '#00a65a';
+    endif;
+
+    return $str;
+}
+
 if (extract($_POST)):
     $db = new myDBC();
     $us = new User();
@@ -70,6 +83,7 @@ if (extract($_POST)):
 
     $results['total'] = [$total1, $total2, $total3, $total4, $total5];
     $results['color'] = [evaluateScore($total1), evaluateScore($total2), evaluateScore($total3), evaluateScore($total4), evaluateScore($total5)];
+    $results['barColor'] = [evaluateBar($total1), evaluateBar($total2), evaluateBar($total3), evaluateBar($total4), evaluateBar($total5)];
 
     echo json_encode($results);
 endif;
