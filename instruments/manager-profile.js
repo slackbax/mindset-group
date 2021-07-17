@@ -12,7 +12,13 @@ $(document).ready(function () {
         if (response.type) {
             new Noty({
                 text: '<b>¡Éxito!</b><br> Las respuestas han sido guardadas correctamente.',
-                type: 'success'
+                type: 'success',
+                callbacks: {
+                    afterClose: function () {
+                        location.reload();
+                        return false;
+                    }
+                }
             }).show();
 
             $clear.click();

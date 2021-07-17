@@ -57,30 +57,6 @@ class Examen {
 		return $lista;
 	}
 
-	/**
-	 * @param $id
-	 * @param $db
-	 * @return array
-	 */
-	public function getByPrueba($id, $db = null): array
-    {
-		if (is_null($db)):
-			$db = new myDBC();
-		endif;
-		$stmt = $db->Prepare("SELECT exa_id FROM msg_examen WHERE pru_id = ?");
-
-		$stmt->bind_param('i', $id);
-		$stmt->execute();
-		$result = $stmt->get_result();
-		$lista = [];
-
-		while ($row = $result->fetch_assoc()):
-			$lista[] = $this->get($row['exa_id'], $db);
-		endwhile;
-
-		return $lista;
-	}
-
     /**
      * @param $user
      * @param $type
