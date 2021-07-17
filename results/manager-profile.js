@@ -40,14 +40,14 @@ $(document).ready(function () {
                 for (let i = 0; i < 5; i++) {
                     vals.push(r.crear[i]);
                     $table1.rows[i + 1].cells[cell].innerHTML = r.crear[i];
-                    flex += parseFloat((r.crear[i] / 5).toFixed(1));
+                    flex += parseFloat((r.crear[i] / 5).toFixed(2));
                     if (first) {
                         cell = 3;
                         first = false;
                     }
                 }
-                vals[0] = parseFloat(flex.toFixed(1));
-                $table1.rows[0].cells[4].innerHTML = flex.toFixed(1);
+                vals[0] = parseFloat(flex.toFixed(2));
+                $table1.rows[0].cells[4].innerHTML = flex.toFixed(2);
 
                 vals.push(0);
                 first = true;
@@ -56,14 +56,14 @@ $(document).ready(function () {
                 for (let i = 0; i < 5; i++) {
                     vals.push(r.competir[i]);
                     $table1.rows[i + 7].cells[cell].innerHTML = r.competir[i];
-                    comp += parseFloat((r.competir[i] / 5).toFixed(1));
+                    comp += parseFloat((r.competir[i] / 5).toFixed(2));
                     if (first) {
                         cell = 3;
                         first = false;
                     }
                 }
-                vals[6] = parseFloat(comp.toFixed(1));
-                $table1.rows[6].cells[4].innerHTML = comp.toFixed(1);
+                vals[6] = parseFloat(comp.toFixed(2));
+                $table1.rows[6].cells[4].innerHTML = comp.toFixed(2);
 
                 vals.push(0);
                 first = true;
@@ -72,14 +72,14 @@ $(document).ready(function () {
                 for (let i = 0; i < 5; i++) {
                     vals.push(r.controlar[i]);
                     $table1.rows[i + 7].cells[cell].innerHTML = r.controlar[i];
-                    cont += parseFloat((r.controlar[i] / 5).toFixed(1));
+                    cont += parseFloat((r.controlar[i] / 5).toFixed(2));
                     if (first) {
                         cell = 1;
                         first = false;
                     }
                 }
-                vals[12] = parseFloat(cont.toFixed(1));
-                $table1.rows[6].cells[2].innerHTML = cont.toFixed(1);
+                vals[12] = parseFloat(cont.toFixed(2));
+                $table1.rows[6].cells[2].innerHTML = cont.toFixed(2);
 
                 vals.push(0);
                 first = true;
@@ -88,14 +88,14 @@ $(document).ready(function () {
                 for (let i = 0; i < 5; i++) {
                     vals.push(r.colaborar[i]);
                     $table1.rows[i + 1].cells[cell].innerHTML = r.colaborar[i];
-                    colab += parseFloat((r.colaborar[i] / 5).toFixed(1));
+                    colab += parseFloat((r.colaborar[i] / 5).toFixed(2));
                     if (first) {
                         cell = 1;
                         first = false;
                     }
                 }
-                vals[18] = parseFloat(colab.toFixed(1));
-                $table1.rows[0].cells[2].innerHTML = colab.toFixed(1);
+                vals[18] = parseFloat(colab.toFixed(2));
+                $table1.rows[0].cells[2].innerHTML = colab.toFixed(2);
 
                 ctx.css('display', 'block');
 

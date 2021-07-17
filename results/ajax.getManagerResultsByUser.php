@@ -27,10 +27,10 @@ if (extract($_POST)):
         foreach ($vf as $i => $v):
             $res = $re->getByExamenNumber($exa->exa_id, $v);
             $pre = $pr->get($res->pre_id);
-            $prom += $res->res_valor / 5;
+            $prom += $res->res_valor;
         endforeach;
 
-        $response['crear'][] = round($prom, 2);
+        $response['crear'][] = round($prom / 5, 2);
     endforeach;
 
     // COMPETIR
@@ -46,10 +46,10 @@ if (extract($_POST)):
         foreach ($vf as $i => $v):
             $res = $re->getByExamenNumber($exa->exa_id, $v);
             $pre = $pr->get($res->pre_id);
-            $prom += $res->res_valor / 5;
+            $prom += $res->res_valor;
         endforeach;
 
-        $response['competir'][] = round($prom, 2);
+        $response['competir'][] = round($prom / 5, 2);
     endforeach;
 
     // CONTROLAR
@@ -65,10 +65,10 @@ if (extract($_POST)):
         foreach ($vf as $i => $v):
             $res = $re->getByExamenNumber($exa->exa_id, $v);
             $pre = $pr->get($res->pre_id);
-            $prom += $res->res_valor / 5;
+            $prom += $res->res_valor;
         endforeach;
 
-        $response['controlar'][] = round($prom, 2);
+        $response['controlar'][] = round($prom / 5, 2);
     endforeach;
 
     // COLABORAR
@@ -84,10 +84,10 @@ if (extract($_POST)):
         foreach ($vf as $i => $v):
             $res = $re->getByExamenNumber($exa->exa_id, $v);
             $pre = $pr->get($res->pre_id);
-            $prom += $res->res_valor / 5;
+            $prom += $res->res_valor;
         endforeach;
 
-        $response['colaborar'][] = round($prom, 2);
+        $response['colaborar'][] = round($prom / 5, 2);
     endforeach;
 
     echo json_encode($response);
