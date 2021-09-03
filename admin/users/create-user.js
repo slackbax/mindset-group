@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     function validateForm() {
         $('#submitLoader').css('display', 'inline-block');
         return true;
@@ -37,7 +36,7 @@ $(document).ready(function () {
         }
     }
 
-    var options = {
+    const options = {
         url: 'admin/users/ajax.insertUser.php',
         type: 'post',
         dataType: 'json',
@@ -113,7 +112,7 @@ $(document).ready(function () {
         $('#gemail').removeClass('has-error has-success');
         $('#iconEmail').removeClass('fa-times fa-check');
 
-        var email_reg = /^([\w-.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+        const email_reg = /^([\w-.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
         if ($(this).val() !== '') {
             if (!email_reg.test($.trim($(this).val()))) {
@@ -134,7 +133,7 @@ $(document).ready(function () {
     });
 
     $('#iNname, #iNlastnamep, #iNlastnamem, #iNpassword, #iNphone').change(function () {
-        var idn = $(this).attr('id').split('N').pop();
+        const idn = $(this).attr('id').split('N').pop();
 
         if ($.trim($(this).val()) !== '') {
             $('#g' + idn).removeClass('has-error').addClass('has-success');

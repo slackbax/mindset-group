@@ -1,7 +1,9 @@
 <?php include 'class/User.php' ?>
 <?php include 'class/Profile.php' ?>
+<?php include 'class/Prueba.php' ?>
 <?php $us = new User() ?>
 <?php $pr = new Profile() ?>
+<?php $pru = new Prueba() ?>
 <?php $u = $us->get($id) ?>
 
 <section class="content-header">
@@ -125,6 +127,24 @@
                 </div>
             </div>
 
+            <div class="box-header with-border">
+                <h3 class="box-title">Instrumentos disponibles</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="row">
+                    <?php $prue = $pru->getAll() ?>
+                    <?php foreach ($prue as $i => $p): ?>
+                        <div class="form-group col-sm-12">
+                            <label>
+                                <input type="checkbox" name="iprueba[]" class="minimal" value="<?php echo $p->pru_id ?>"<?php if ($us->getHasInstrument($id, $p->pru_id)): ?> checked<?php endif ?>>
+                                <?php echo $p->pru_nombre ?>
+                            </label>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
 			<div class="box-footer">
 				<button type="submit" class="btn btn-primary" id="btnsubmit"><i class="fa fa-check"></i> Editar</button>
                 <button type="button" class="btn btn-default" id="btnClear">Limpiar</button>
@@ -134,6 +154,4 @@
 	</form>
 </section>
 
-<!-- pincode-input -->
-<script src="bower_components/bootstrap-pincode-input/js/bootstrap-pincode-input.js"></script>
 <script src="admin/users/edit-user.js"></script>

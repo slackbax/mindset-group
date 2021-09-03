@@ -71,12 +71,24 @@ if (extract($_POST)):
 
 			$ins = $user->setPicture($id, $pic_route, $db);
 
-			if (!$ins):
+			if (!$ins['estado']):
 				throw new Exception('Error al guardar la imagen. ' . $ins['msg'], 0);
 			endif;
 
 			$_SESSION['msg_userpic'] = 'users/' . $id . '_' . $file['name'][0];
 		endif;
+
+		$del_ins = $user->delInstruments($id, $db);
+
+        if (!$del_ins['estado'])
+            throw new Exception('Error al eliminar el instrumento. ' . $del_ins['msg'], 0);
+
+        foreach ($iprueba as $i => $pru):
+            $ins_in = $user->setInstruments($id, $pru, $db);
+
+            if (!$ins_in['estado'])
+                throw new Exception('Error al guardar el instrumento. ' . $ins_p['msg'], 0);
+        endforeach;
 
 		$db->Commit();
 		$db->autoCommit(TRUE);

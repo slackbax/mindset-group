@@ -1,5 +1,7 @@
 <?php include 'class/Profile.php' ?>
+<?php include 'class/Prueba.php' ?>
 <?php $pr = new Profile() ?>
+<?php $pru = new Prueba() ?>
 
 <section class="content-header">
     <h1>Administración
@@ -102,6 +104,24 @@
                             <label>
                                 <input type="radio" name="iprofile" class="minimal" value="<?php echo $p->perf_id ?>"<?php if ($p->perf_id == 1): ?> checked<?php endif ?>>
                                 <?php echo $p->perf_descripcion ?>
+                            </label>
+                        </div>
+                    <?php endforeach ?>
+                </div>
+            </div>
+
+            <div class="box-header with-border">
+                <h3 class="box-title">Instrumentos disponibles</h3>
+            </div>
+
+            <div class="box-body">
+                <div class="row">
+                    <?php $prue = $pru->getAll() ?>
+                    <?php foreach ($prue as $i => $p): ?>
+                        <div class="form-group col-sm-12">
+                            <label>
+                                <input type="checkbox" name="iprueba[]" class="minimal" value="<?php echo $p->pru_id ?>">
+                                <?php echo $p->pru_nombre ?>
                             </label>
                         </div>
                     <?php endforeach ?>

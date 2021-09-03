@@ -242,6 +242,28 @@ class User
     }
 
     /**
+     * @param $us
+     * @param $pru
+     * @param null $db
+     * @return bool
+     */
+    public function getHasInstrument($us, $pru, $db = null): bool
+    {
+        if (is_null($db)):
+            $db = new myDBC();
+        endif;
+
+        $stmt = $db->Prepare("SELECT upr_id FROM msg_usuario_prueba WHERE us_id = ? AND pru_id = ?");
+        $stmt->bind_param("ii", $us, $pru);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        unset($db);
+
+        return !is_null($row['upr_id']);
+    }
+
+    /**
      * @param $profile
      * @param $rut
      * @param $name
@@ -314,6 +336,42 @@ class User
 
             if (!$stmt->execute()):
                 throw new Exception("La inserción de la imagen falló en su ejecución.");
+            endif;
+
+            $result = array('estado' => true, 'msg' => true);
+            $stmt->close();
+            return $result;
+        } catch (Exception $e) {
+            return array('estado' => false, 'msg' => $e->getMessage());
+        }
+    }
+
+    /**
+     * @param $id
+     * @param $inst
+     * @param null $db
+     * @return array|bool[]
+     */
+    public function setInstruments($id, $inst, $db = null): array
+    {
+        if (is_null($db)):
+            $db = new myDBC();
+        endif;
+
+        try {
+            $stmt = $db->Prepare("INSERT INTO msg_usuario_prueba (us_id, pru_id) VALUES (?, ?)");
+
+            if (!$stmt):
+                throw new Exception("La inserción del instrumento de usuario falló en su preparación.");
+            endif;
+
+            $bind = $stmt->bind_param("ii", $id, $inst);
+            if (!$bind):
+                throw new Exception("La inserción del instrumento de usuario falló en su binding.");
+            endif;
+
+            if (!$stmt->execute()):
+                throw new Exception("La inserción del instrumento de usuario falló en su ejecución.");
             endif;
 
             $result = array('estado' => true, 'msg' => true);
@@ -522,6 +580,41 @@ class User
             endif;
 
             $result = array('estado' => true, 'msg' => $txt_p);
+            $stmt->close();
+            return $result;
+        } catch (Exception $e) {
+            return array('estado' => false, 'msg' => $e->getMessage());
+        }
+    }
+
+    /**
+     * @param $id
+     * @param null $db
+     * @return array|bool[]
+     */
+    public function delInstruments($id, $db = null): array
+    {
+        if (is_null($db)):
+            $db = new myDBC();
+        endif;
+
+        try {
+            $stmt = $db->Prepare("DELETE FROM msg_usuario_prueba WHERE us_id = ?");
+
+            if (!$stmt):
+                throw new Exception("La eliminación del instrumento de usuario falló en su preparación.");
+            endif;
+
+            $bind = $stmt->bind_param("i", $id);
+            if (!$bind):
+                throw new Exception("La eliminación del instrumento de usuario falló en su binding.");
+            endif;
+
+            if (!$stmt->execute()):
+                throw new Exception("La eliminación del instrumento de usuario falló en su ejecución.");
+            endif;
+
+            $result = array('estado' => true, 'msg' => true);
             $stmt->close();
             return $result;
         } catch (Exception $e) {

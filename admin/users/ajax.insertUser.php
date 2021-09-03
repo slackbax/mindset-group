@@ -40,6 +40,13 @@ if (extract($_POST)):
             throw new Exception('Error al guardar la imagen. ' . $ins_p['msg'], 0);
         endif;
 
+        foreach ($iprueba as $i => $pru):
+            $ins_in = $user->setInstruments($ins['msg'], $pru, $db);
+
+            if (!$ins_in['estado'])
+                throw new Exception('Error al guardar el instrumento. ' . $ins_p['msg'], 0);
+        endforeach;
+
         $db->Commit();
         $db->autoCommit(TRUE);
         $response = array('type' => true, 'msg' => 'OK');
