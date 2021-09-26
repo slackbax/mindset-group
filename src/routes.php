@@ -1,5 +1,4 @@
 <?php
-$sbs = '';
 extract($_GET);
 
 if (!isset($section) || $section == 'home'):
@@ -17,6 +16,10 @@ elseif ($section == 'instruments' and $_login):
         include 'instruments/competitive-profile.php';
     elseif ($sbs == 'managerprofile'):
         include 'instruments/manager-profile.php';
+    elseif ($sbs == 'strategicfocus'):
+        include 'instruments/strategic-focus.php';
+    elseif ($sbs == 'naturaltalent'):
+        include 'instruments/natural-talent.php';
     else:
         include 'src/error.php';
     endif;
@@ -33,6 +36,10 @@ elseif ($section == 'results' and $_admin):
         include 'results/competitive-profile.php';
     elseif ($sbs == 'managerresult'):
         include 'results/manager-profile.php';
+    elseif ($sbs == 'strategicfocusresult'):
+        include 'results/strategic-focus.php';
+    elseif ($sbs == 'naturaltalentresult'):
+        include 'results/natural-talent.php';
     else:
         include 'src/error.php';
     endif;
