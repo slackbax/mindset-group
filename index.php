@@ -21,9 +21,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Mindset Group</title>
 
+    <!-- favicon -->
+    <link rel="shortcut icon" href="dist/img/favicon.png">
     <!-- Responsivness -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Pace style -->
+    <link rel="stylesheet" href="plugins/pace/pace.min.css">
     <!-- DataTables -->
     <link rel="stylesheet" href="bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="bower_components/datatables.net-buttons-bs/css/buttons.bootstrap.min.css">
@@ -212,6 +216,8 @@
     <!-- REQUIRED JS SCRIPTS -->
     <!-- Bootstrap 3.3.7 -->
     <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- PACE -->
+    <script src="plugins/pace/pace.min.js"></script>
     <!-- DataTables -->
     <script src="bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
     <script src="bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>

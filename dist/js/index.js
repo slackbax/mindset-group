@@ -15,7 +15,8 @@ $(document).ready(function () {
 	$('#btn-help').click(function () {
 		swal({
 			title: "¿Necesitas ayuda?",
-			html: 'Para cualquier duda o sugerencia, puedes contactar al soporte de la aplicación al e-mail <a href="mailto:soporte@mindsetgroup.cl">soporte@mindsetgroup.cl</a><br><br>',
+			html: 'Para cualquier duda o sugerencia, puedes contactar al soporte de la aplicación al e-mail <a class="text-bold" target="_blank" href="mailto:it@mindsetgroup.cl">it@mindsetgroup.cl</a> ' +
+				'o por WhatsApp al número <a class="text-bold" target="_blank" href="https://wa.me/56999195279?text=Necesito%20ayuda%20con%20la%20aplicacion%20de%20MindsetGroup">+56 9 9919 5279</a>',
 			type: "warning",
 			showCancelButton: false,
 			confirmButtonColor: "#DD6B55",
