@@ -264,6 +264,32 @@ class User
     }
 
     /**
+     * @param $pru
+     * @param null $db
+     * @return array
+     */
+    public function getByInstrument($pru, $db = null): array
+    {
+        if (is_null($db)):
+            $db = new myDBC();
+        endif;
+
+        $stmt = $db->Prepare("SELECT us_id FROM msg_examen WHERE pru_id = ?");
+        $pru = $db->clearText($pru);
+        $stmt->bind_param("i", $pru);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $lista = [];
+
+        while ($row = $result->fetch_assoc()):
+            $lista[] = $this->get($row['us_id'], $db);
+        endwhile;
+
+        unset($db);
+        return $lista;
+    }
+
+    /**
      * @param $profile
      * @param $rut
      * @param $name

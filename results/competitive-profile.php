@@ -39,7 +39,7 @@ $profile = ['Características Dominantes', 'Líder de la Organización', 'Direcc
                         <label class="control-label" for="iNuser">Usuario</label>
                         <select class="form-control" id="iNuser" name="iuser">
                             <option value="">Selecciona usuario</option>
-                            <?php $u = $us->getByProfile(2) ?>
+                            <?php $u = $us->getByInstrument(4) ?>
                             <?php foreach ($u as $k => $user): ?>
                                 <option value="<?php echo $user->us_id ?>"><?php echo $user->us_nombres . ' ' . $user->us_ap . ' ' . $user->us_am ?></option>
                             <?php endforeach ?>
