@@ -80,6 +80,14 @@ $(document).ready(function () {
                     if (inputAnswered === 4) {
                         swal("¡Error!", "Los valores ingresados suman menos de 100 puntos para el perfil. Recuerde que la suma no debe ser inferior a los 100 puntos.", "error");
                         $('#' + lastId).val('');
+                        total = 0;
+                        $('.' + per + '-' + asp).each(function () {
+                            if ($(this).val() !== '' && !isNaN($(this).val())) {
+                                total += parseInt($(this).val());
+                                inputAnswered++;
+                            }
+                        });
+                        $inTotal.val(total);
                     }
                 }
             }
