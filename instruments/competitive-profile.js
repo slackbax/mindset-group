@@ -58,23 +58,30 @@ $(document).ready(function () {
         if ($(this).val() !== '') {
             const per = $(this).attr('id').split('_')[0];
             const asp = $(this).attr('id').split('_')[2];
-
-            let total = 0;
+            let inputAnswered = 0, total = 0, lastId = '';
             $('.' + per + '-' + asp).each(function () {
-                if ($(this).val() !== '' && !isNaN($(this).val()))
+                lastId = $(this).attr('id');
+                if ($(this).val() !== '' && !isNaN($(this).val())) {
                     total += parseInt($(this).val());
+                    inputAnswered++;
+                }
             });
             const $inTotal = $('#' + per + '_' + asp);
 
             if (total > 100) {
-                swal("¡Error!", "Los valores ingresados suman más de 100 puntos para el perfil. Recuerde que la suma no debe superar los 10 puntos.", "error");
+                swal("¡Error!", "Los valores ingresados suman más de 100 puntos para el perfil. Recuerde que la suma no debe superar los 100 puntos.", "error");
                 $(this).val('');
             } else {
                 $inTotal.val(total);
                 if (total === 100)
                     $inTotal.addClass('text-green');
-                else
+                else {
                     $inTotal.removeClass('text-green');
+                    if (inputAnswered === 4) {
+                        swal("¡Error!", "Los valores ingresados suman menos de 100 puntos para el perfil. Recuerde que la suma no debe ser inferior a los 100 puntos.", "error");
+                        $('#' + lastId).val('');
+                    }
+                }
             }
         }
     })
