@@ -273,4 +273,4 @@
     </form>
 </section>
 
-<script src="instruments/competitive-profile.js"></script>
+<script src="instruments/competitive-profile.js?202110081728"></script>

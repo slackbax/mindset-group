@@ -3,7 +3,18 @@ $(document).ready(function () {
 
     function validateForm() {
         $loader.css('display', 'inline-block');
-        return true;
+        let validateTotal = true;
+        $('.total').each(function (i) {
+            if ($(this).val() === '0')
+                validateTotal = false;
+        })
+
+        if (!validateTotal) {
+            swal("¡Error!", "Existen valores faltantes por ingresar. Recuerde que la suma de cada columna debe ser exactamente igual a 100 puntos.", "error");
+            $loader.css('display', 'none');
+        }
+
+        return validateTotal;
     }
 
     function showResponse(response) {
@@ -23,7 +34,7 @@ $(document).ready(function () {
 
             $clear.click();
             $form.clearForm();
-            $('.minimal').iCheck('disable');
+            $('.valor').prop('disable', true);
         } else {
             if (response.code === 0) {
                 new Noty({
