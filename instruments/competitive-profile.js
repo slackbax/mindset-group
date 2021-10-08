@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    const $loader = $('#submitLoader'), $clear = $('#btnClear'), $form = $('#formNewTest');
+    const $loader = $('#submitLoader'), $clear = $('#btnClear'), $form = $('#formNewTest'), $valor = $('.valor');
 
     function validateForm() {
         $loader.css('display', 'inline-block');
@@ -34,7 +34,7 @@ $(document).ready(function () {
 
             $clear.click();
             $form.clearForm();
-            $('.valor').prop('disable', true);
+            $valor.prop('disable', true);
         } else {
             if (response.code === 0) {
                 new Noty({
@@ -65,7 +65,7 @@ $(document).ready(function () {
 
     $loader.css('display', 'none');
 
-    $('.valor').change(function () {
+    $valor.change(function () {
         if ($(this).val() !== '') {
             const per = $(this).attr('id').split('_')[0];
             const asp = $(this).attr('id').split('_')[2];
