@@ -8,7 +8,7 @@ $(document).ready(function () {
         },
         options: {
             responsive: true,
-            scales: {r: {min: 0, max: 100, pointLabels: {font: {size: 14}}}},
+            scales: {r: {min: 0, pointLabels: {font: {size: 14}}}},
             spanGaps: true
         }
     }), val1 = [], val2 = [];

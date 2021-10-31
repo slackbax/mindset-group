@@ -7,7 +7,7 @@ $(document).ready(function () {
             datasets: []
         },
         options: {
-            scales: {r: {min: -30, max: 30, pointLabels: {font: {size: 14}}}},
+            scales: {r: {pointLabels: {font: {size: 14}}}},
             responsive: true,
             spanGaps: true
         }
