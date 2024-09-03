@@ -1,5 +1,5 @@
-<?php include 'class/Grupo.php' ?>
-<?php $gr = new Grupo() ?>
+<?php include 'class/Empresa.php' ?>
+<?php $em = new Empresa() ?>
 
 <section class="content-header">
     <h1>Consolidados
@@ -20,14 +20,21 @@
 
         <div class="box-body">
             <div class="row">
+                <div class="form-group col-md-6 col-lg-4 has-feedback" id="genterprise">
+                    <label class="control-label" for="iNenterprise">Empresa</label>
+                    <select class="form-control" id="iNenterprise" name="ienterprise" required>
+                        <option value="">Selecciona empresa</option>
+                        <?php $e = $em->getAll() ?>
+                        <?php foreach ($e as $k => $enterprise): ?>
+                            <option value="<?php echo $enterprise->emp_id ?>"><?php echo $enterprise->emp_nombre ?></option>
+                        <?php endforeach ?>
+                    </select>
+                </div>
+
                 <div class="form-group col-md-6 col-lg-4 has-feedback" id="ggroup">
                     <label class="control-label" for="iNgroup">Grupo</label>
-                    <select class="form-control" id="iNgroup" name="igroup">
-                        <option value="">Selecciona grupo</option>
-                        <?php $g = $gr->getAll() ?>
-                        <?php foreach ($g as $k => $group): ?>
-                            <option value="<?php echo $group->gr_id ?>"><?php echo $group->gr_nombre ?></option>
-                        <?php endforeach ?>
+                    <select class="form-control" id="iNgroup" name="igroup" required>
+                        <option value="">TODOS LOS GRUPOS</option>
                     </select>
                 </div>
             </div>

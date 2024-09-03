@@ -16,6 +16,26 @@ $(document).ready(function () {
     $('#submitLoaderSearch').css('display', 'none');
     ctx.css('display', 'none');
 
+    $('#iNenterprise').change(function () {
+        $('#iNgroup').html('').append('<option value="">Cargando grupos...</option>');
+        $('#ggroup').removeClass('has-error has-success');
+
+        $.ajax({
+            type: 'POST',
+            url: 'consolidated/ajax.getGroupsByEnterprise.php',
+            dataType: 'json',
+            data: {id: $(this).val()}
+        }).done(function (data) {
+            $('#iNgroup').html('').append('<option value="">TODOS LOS GRUPOS</option>');
+
+            $.each(data, function (k, v) {
+                $('#iNgroup').append(
+                    $('<option></option>').val(v.gr_id).html(v.gr_nombre)
+                );
+            });
+        });
+    });
+
     $('#btnsearch').click(function () {
         ctx.css('display', 'none');
         myChart.clear();
@@ -24,7 +44,7 @@ $(document).ready(function () {
             type: 'POST',
             url: 'consolidated/ajax.getPerformanceResultsByGroup.php',
             dataType: 'json',
-            data: {group: $('#iNgroup').val(), test: 1}
+            data: {emp: $('#iNenterprise').val(), group: $('#iNgroup').val(), test: 1}
         }).done(function (r) {
             if (r[0] !== '') {
                 ctx.css('display', 'block');

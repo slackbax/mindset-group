@@ -1,7 +1,7 @@
 {
     "require": {
         "phpmailer/phpmailer": "^6.1",
-        "phpoffice/phpspreadsheet": "^1.8.2",
+        "phpoffice/phpspreadsheet": "*",
         "box/spout": "^3.1"
     }
 }

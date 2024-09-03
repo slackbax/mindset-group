@@ -2,8 +2,9 @@ $(document).ready(function () {
     const $table1 = document.getElementById('table_result'), ctx = $('#myChart');
     const chartOptions = {
         responsive: true,
-        plugins: {legend: {labels: {font: {size: 16}}}}, scales: {x: {min: 2, max: 10, ticks: {stepSize: 1}}, y: {ticks: {font: {size: 11}}}},
-        indexAxis: 'y'
+        plugins: {legend: {labels: {font: {size: 16, color: '#FFF'}}}}, scales: {x: {min: 2, max: 10, ticks: {stepSize: 1, color: '#FFF'}}, y: {ticks: {font: {size: 11}, color: '#FFF'}}},
+        indexAxis: 'y',
+        color: '#FFF'
     };
 
     let myChart = new Chart(ctx, {
@@ -50,7 +51,7 @@ $(document).ready(function () {
                     myChart.config.data = {
                         labels: lbl,
                         datasets: [{
-                            label: 'Salud del equipo II',
+                            label: 'Disfuncionalidad de los Equipos',
                             data: vals,
                             backgroundColor: cols
                         }]

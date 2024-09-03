@@ -3,8 +3,9 @@ $(document).ready(function () {
         $id = $('#iid'), $user = $('#iNuser');
     const chartOptions = {
         responsive: true,
-        plugins: {legend: {labels: {font: {size: 16}}}}, scales: {x: {min: -10, max: 10, ticks: {stepSize: 5}}, y: {ticks: {font: {size: 11}}}},
-        indexAxis: 'y'
+        plugins: {legend: {labels: {font: {size: 16, color: '#FFF'}}}}, scales: {x: {min: -10, max: 10, ticks: {stepSize: 5, color: '#FFF'}}, y: {ticks: {font: {size: 11}, color: '#FFF'}}},
+        indexAxis: 'y',
+        color: '#FFF'
     };
 
     let myChart1 = new Chart(ctx1, {

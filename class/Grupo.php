@@ -26,6 +26,7 @@ class Grupo
 
         $obj = new stdClass();
         $obj->gr_id = $row['gr_id'];
+        $obj->emp_id = $row['emp_id'];
         $obj->gr_nombre = utf8_encode($row['gr_nombre']);
         $obj->gr_activo = $row['gr_activo'];
 
@@ -78,6 +79,32 @@ class Grupo
 
         unset($db);
         return $obj;
+    }
+
+    /**
+     * @param $emp
+     * @param null $db
+     * @return array
+     */
+    public function getByEmpresa($emp, $db = null): array
+    {
+        if (is_null($db)):
+            $db = new myDBC();
+        endif;
+
+        $stmt = $db->Prepare("SELECT gr_id FROM msg_grupo WHERE emp_id = ?");
+
+        $stmt->bind_param("i", $emp);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $lista = [];
+
+        while ($row = $result->fetch_assoc()):
+            $lista[] = $this->get($row['gr_id'], $db);
+        endwhile;
+
+        unset($db);
+        return $lista;
     }
 
     /**
