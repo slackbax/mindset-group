@@ -489,6 +489,31 @@ class Worksheet extends BIFFwriter
         $this->storeEof();
     }
 
+    public const MAX_XLS_COLUMN = 256;
+    public const MAX_XLS_COLUMN_STRING = 'IV';
+    public const MAX_XLS_ROW = 65536;
+
+    private static function limitRange(string $exploded): string
+    {
+        $retVal = '';
+        $ranges = Coordinate::getRangeBoundaries($exploded);
+        $firstCol = Coordinate::columnIndexFromString($ranges[0][0]);
+        $firstRow = (int) $ranges[0][1];
+        if ($firstCol <= self::MAX_XLS_COLUMN && $firstRow <= self::MAX_XLS_ROW) {
+            $retVal = $exploded;
+            if (str_contains($exploded, ':')) {
+                $lastCol = Coordinate::columnIndexFromString($ranges[1][0]);
+                $ranges[1][1] = min(self::MAX_XLS_ROW, (int) $ranges[1][1]);
+                if ($lastCol > self::MAX_XLS_COLUMN) {
+                    $ranges[1][0] = self::MAX_XLS_COLUMN_STRING;
+                }
+                $retVal = "{$ranges[0][0]}{$ranges[0][1]}:{$ranges[1][0]}{$ranges[1][1]}";
+            }
+        }
+
+        return $retVal;
+    }
+
     private function writeConditionalFormatting(): void
     {
         $conditionalFormulaHelper = new ConditionalHelper($this->parser);
@@ -497,7 +522,10 @@ class Worksheet extends BIFFwriter
         foreach ($this->phpSheet->getConditionalStylesCollection() as $key => $value) {
             $keyExplode = explode(',', Coordinate::resolveUnionAndIntersection($key));
             foreach ($keyExplode as $exploded) {
-                $arrConditionalStyles[$exploded] = $value;
+                $range = self::limitRange($exploded);
+                if ($range !== '') {
+                    $arrConditionalStyles[$range] = $value;
+                }
             }
         }
         if (!empty($arrConditionalStyles)) {
@@ -2334,7 +2362,7 @@ class Worksheet extends BIFFwriter
      *
      * @param GdImage $image The image to process
      *
-     * @return array Array with data and properties of the bitmap
+     * @return array{0: float, 1: float, 2: int, 3: string} Data and properties of the bitmap
      */
     public function processBitmapGd(GdImage $image): array
     {
@@ -2344,9 +2372,9 @@ class Worksheet extends BIFFwriter
         $data = pack('Vvvvv', 0x000C, $width, $height, 0x01, 0x18);
         for ($j = $height; --$j;) {
             for ($i = 0; $i < $width; ++$i) {
-                /** @phpstan-ignore-next-line */
-                $color = imagecolorsforindex($image, imagecolorat($image, $i, $j));
-                if ($color !== false) {
+                $colorAt = imagecolorat($image, $i, $j);
+                if ($colorAt !== false) {
+                    $color = imagecolorsforindex($image, $colorAt);
                     foreach (['red', 'green', 'blue'] as $key) {
                         $color[$key] = $color[$key] + (int) round((255 - $color[$key]) * $color['alpha'] / 127);
                     }
@@ -2357,8 +2385,11 @@ class Worksheet extends BIFFwriter
                 $data .= str_repeat("\x00", 4 - 3 * $width % 4);
             }
         }
+        // Phpstan says this always throws an exception before getting here.
+        // I don't see why, but I think this is code is never exercised
+        // in unit tests, so I can't say for sure it's wrong.
 
-        return [$width, $height, strlen($data), $data];
+        return [$width, $height, strlen($data), $data]; //* @phpstan-ignore-line
     }
 
     /**
@@ -2844,9 +2875,9 @@ class Worksheet extends BIFFwriter
             $bFormatBorder = 0;
         }
         // Pattern
-        $bFillStyle = ($conditional->getStyle()->getFill()->getFillType() === null ? 0 : 1);
-        $bFillColor = ($conditional->getStyle()->getFill()->getStartColor()->getARGB() === null ? 0 : 1);
-        $bFillColorBg = ($conditional->getStyle()->getFill()->getEndColor()->getARGB() === null ? 0 : 1);
+        $bFillStyle = $conditional->getStyle()->getFill()->getFillType() ? 1 : 0;
+        $bFillColor = $conditional->getStyle()->getFill()->getStartColor()->getARGB() ? 1 : 0;
+        $bFillColorBg = $conditional->getStyle()->getFill()->getEndColor()->getARGB() ? 1 : 0;
         if ($bFillStyle == 1 || $bFillColor == 1 || $bFillColorBg == 1) {
             $bFormatFill = 1;
         } else {
